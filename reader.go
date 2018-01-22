@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+  "encoding/json"
 
 	"github.com/coreos/go-systemd/sdjournal"
 )
@@ -137,5 +138,6 @@ func synthRecord(err error) Record {
 		Command:  "journald-cloudwatch-logs",
 		Priority: ERROR,
 		Message:  err.Error(),
+    Data:     json.RawMessage(err.Error()),
 	}
 }

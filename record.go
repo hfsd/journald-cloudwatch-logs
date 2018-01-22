@@ -1,5 +1,7 @@
 package main
 
+import "encoding/json"
+
 type Priority int
 
 var (
@@ -47,6 +49,7 @@ type Record struct {
 	Container_Name string       `json:"containerName,omitempty" journald:"CONTAINER_NAME"`
 	Container_Tag  string       `json:"containerTag,omitempty" journald:"CONTAINER_TAG"`
 	Container_ID   string       `json:"containerID,omitempty" journald:"CONTAINER_ID"`
+  Data           json.RawMessage `json:"data" journald:"DATA"`
 }
 
 type RecordSyslog struct {
